@@ -1,0 +1,6 @@
+rootProject.name = 'TvsquaredExample'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+
+include ':reactnativetvsquared'
+project(':reactnativetvsquared').projectDir = new File(rootProject.projectDir, '../../android')
