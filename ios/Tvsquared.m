@@ -1,8 +1,11 @@
 #import "Tvsquared.h"
+#import "TVSquaredCollector.h"
 
-@implementation Tvsquared
+@implementation Tvsquared {
+    TVSquaredCollector *_collector;
+}
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE(Tvsquared)
 
 RCT_EXPORT_METHOD(initialize:(NSString *)hostname clientKey:(NSString *)clientKey)
 {
@@ -20,10 +23,10 @@ RCT_EXPORT_METHOD(trackUser:(NSString *)userId)
     [_collector track];
 }
 
-RCT_EXPORT_METHOD(trackAction:(NSString *)actionName product:(NSString *)product actionId:(NSString *)actionId renueve:(NSString *)renueve promoCode:(NSString *)promoCode)
+RCT_EXPORT_METHOD(trackAction:(NSString *)actionName product:(NSString *)product actionId:(NSString *)actionId revenue:(float)revenue promoCode:(NSString *)promoCode)
 {
     _collector.userId = _collector.userId;
-    [_collector track:actionName product:product orderid:actionId revenue:renueve promocode:promoCode];
+    [_collector track:actionName product:product orderid:actionId revenue:revenue promocode:promoCode];
 }
 
 

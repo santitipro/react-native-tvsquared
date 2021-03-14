@@ -35,10 +35,10 @@ class TvsquaredModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
     }
 
     @ReactMethod
-    fun trackAction(actionName: String, product: String, actionId: String, renueve: Float, promoCode: String) {
+    fun trackAction(actionName: String, product: String, actionId: String, revenue: Float, promoCode: String) {
       this.ensureTracker();
       traker.setUserId(traker.getUserId());
-      traker.track(actionName, product, actionId, renueve, product);
+      traker.track(actionName, product, actionId, revenue, product);
     }
 
     private fun ensureTracker() {

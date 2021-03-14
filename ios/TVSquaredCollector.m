@@ -1,3 +1,4 @@
+#import "TVSquaredCollector.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <Foundation/Foundation.h>
 
