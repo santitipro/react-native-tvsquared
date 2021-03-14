@@ -1,7 +1,16 @@
 import { NativeModules } from 'react-native';
 
 type TvsquaredType = {
-  multiply(a: number, b: number): Promise<number>;
+  initialize(hostname: string, clientKey: string): void;
+  track(): void;
+  trackUser(userId: string): void;
+  trackAction(
+    actionName: string,
+    product: string,
+    actionId: string,
+    renueve: number,
+    promoCode: string
+  ): void;
 };
 
 const { Tvsquared } = NativeModules;

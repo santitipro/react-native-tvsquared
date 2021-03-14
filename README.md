@@ -15,7 +15,7 @@ import Tvsquared from "react-native-tvsquared";
 
 // ...
 
-const result = await Tvsquared.multiply(3, 7);
+Tvsquared.initialize('HOST_NAME', 'CLIENT_KEY');
 ```
 
 ## Contributing
