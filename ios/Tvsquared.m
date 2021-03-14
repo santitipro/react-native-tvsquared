@@ -4,16 +4,28 @@
 
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(nonnull NSNumber*)a withB:(nonnull NSNumber*)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(initialize:(NSString *)hostname clientKey:(NSString *)clientKey)
 {
-  NSNumber *result = @([a floatValue] * [b floatValue]);
-
-  resolve(result);
+    _collector = [[TVSquaredCollector alloc] initTracker:hostname siteid:clientKey];
 }
+
+RCT_EXPORT_METHOD(track)
+{
+    [_collector track];
+}
+
+RCT_EXPORT_METHOD(trackUser:(NSString *)userId)
+{
+    _collector.userId = userId;
+    [_collector track];
+}
+
+RCT_EXPORT_METHOD(trackAction:(NSString *)actionName product:(NSString *)product actionId:(NSString *)actionId renueve:(NSString *)renueve promoCode:(NSString *)promoCode)
+{
+    _collector.userId = _collector.userId;
+    [_collector track:actionName product:product orderid:actionId revenue:renueve promocode:promoCode];
+}
+
+
 
 @end
