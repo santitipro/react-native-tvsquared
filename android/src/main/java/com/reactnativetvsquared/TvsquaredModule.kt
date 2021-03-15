@@ -3,7 +3,6 @@ package com.reactnativetvsquared
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.Promise
 
 import com.reactnativetvsquared.TVSquaredCollector;
 
@@ -21,21 +20,20 @@ class TvsquaredModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
     }
 
     @ReactMethod
-    fun track(promise: Promise) {
-      this.ensureTracker();
-      traker.track();
-    }
-
-    @ReactMethod
     fun trackUser(userId: String) {
       this.ensureTracker();
       traker.setUserId(userId);
       traker.track();
-
     }
 
     @ReactMethod
-    fun trackAction(actionName: String, product: String, actionId: String, revenue: Float, promoCode: String) {
+    fun track() {
+      this.ensureTracker();
+      traker.track();
+    }
+
+    @ReactMethod
+    fun trackAction(actionName: String, product: String?, actionId: String?, revenue: Float, promoCode: String?) {
       this.ensureTracker();
       traker.setUserId(traker.getUserId());
       traker.track(actionName, product, actionId, revenue, product);
