@@ -75,11 +75,11 @@ public class TVSquaredCollector {
     }
   }
 
-  private String getVisitorId(Activity activity)
+  private String getVisitorId(Context context)
     throws NoSuchAlgorithmException {
     String prefname = "visitor" + this.siteid;
 
-    SharedPreferences settings = activity.getSharedPreferences("TVSquaredTracker", 0);
+    SharedPreferences settings = context.getSharedPreferences("TVSquaredTracker", 0);
     String visitor = null;
      if (visitor == null) {
       visitor = this.md5(UUID.randomUUID().toString()).substring(0, 16);

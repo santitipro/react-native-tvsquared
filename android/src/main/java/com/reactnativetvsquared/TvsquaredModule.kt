@@ -16,7 +16,7 @@ class TvsquaredModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
 
     @ReactMethod
     fun initialize(hostname: String, clientKey: String) {
-      traker = TVSquaredCollector(currentActivity, hostname, clientKey, true);
+      traker = TVSquaredCollector(this.currentActivity, hostname, clientKey, true);
     }
 
     @ReactMethod
