@@ -78,14 +78,19 @@ public class TVSquaredCollector {
   private String getVisitorId(Context context)
     throws NoSuchAlgorithmException {
     String prefname = "visitor" + this.siteid;
+    String visitorRandomId = this.md5(UUID.randomUUID().toString()).substring(0, 16);
 
-    SharedPreferences settings = context.getSharedPreferences("TVSquaredTracker", 0);
-    String visitor = null;
-     if (visitor == null) {
-      visitor = this.md5(UUID.randomUUID().toString()).substring(0, 16);
-      settings.edit().putString(prefname, visitor).commit();
+    try {
+      SharedPreferences settings = context.getSharedPreferences("TVSquaredTracker", 0);
+      String visitor = null;
+      if (visitor == null) {
+        visitor = visitorRandomId;
+        settings.edit().putString(prefname, visitor).commit();
+      }
+      return visitor;
+    } catch (Throwable t) {
+      return visitorRandomId;
     }
-    return visitor;
   }
 
   private void appendSessionDetails(Uri.Builder builder)
